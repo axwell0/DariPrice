@@ -87,7 +87,7 @@ export default function HousingSearchForm() {
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center p-4">
           <div className="w-full max-w-md space-y-8 p-8 rounded-xl bg-gray-900/60 backdrop-blur-sm border border-purple-500/20">
             <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold tracking-tight text-white">Tunisian Real Estate Pricer</h1>
+              <h1 className="text-3xl font-bold tracking-tight text-white">COCK Real Estate Pricer</h1>
               <p className="text-purple-300">Enter property details below</p>
               {error && <p className="text-red-500">{error}</p>}
             </div>
