@@ -17,10 +17,7 @@ import PriceDisplay from '@/components/PriceDisplay'
 type StateCityData = Record<string, string[]>
 
 async function predictHousePrice(formData: unknown) {
-  const api_url = process.env.NEXT_API_URL
   const api_public_url = process.env.NEXT_PUBLIC_API_URL
-
-  console.log(api_url)
   console.log(api_public_url)
 
   const response = await fetch(`${api_public_url}/api/predict`, {
@@ -87,6 +84,80 @@ export default function HousingSearchForm() {
     setShowPrice(false);
   }
 
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
+    let value = parseInt(e.target.value);
+    let min = 1, max = 7, areaMin = 60, areaMax = 1000;
+    if (formData.Type === "apartment") {
+      if (field === 'n_bathrooms') {
+        min = 1;
+        max = 2;
+      }
+      if (field === 'n_bedrooms') {
+        min = 1;
+        max = 4;
+      }
+      if (field === 'area') {
+        areaMin = 30;
+        areaMax = 200;
+      }
+    } else if (formData.Type === "villa") { // House
+      if (field === 'n_bathrooms') {
+        max = 5;
+      }
+      if (field === 'n_bedrooms') {
+        max = 7;
+      }
+      if (field === 'area') {
+        areaMin = 100;
+        areaMax = 1000;
+      }
+    }
+
+    if ((field === 'area' && value >= areaMin && value <= areaMax) ||
+        (field !== 'area' && value >= min && value <= max)) {
+      setFormData(prev => ({ ...prev, [field]: e.target.value }));
+    }
+  }
+
+  const generateLabel = (field: string) => {
+    let min = 1, max = 7, areaMin = 60, areaMax = 1000;
+
+    if (formData.Type === "apartment") {
+      if (field === 'n_bathrooms') {
+        min = 1;
+        max = 2;
+      }
+      if (field === 'n_bedrooms') {
+        min = 1;
+        max = 4;
+      }
+      if (field === 'area') {
+        areaMin = 30;
+        areaMax = 200;
+      }
+    } else if (formData.Type === "villa") {
+      if (field === 'n_bathrooms') {
+        max = 5;
+      }
+      if (field === 'n_bedrooms') {
+        max = 7;
+      }
+      if (field === 'area') {
+        areaMin = 100;
+        areaMax = 1000;
+      }
+    }
+    if (field === 'n_bedrooms') {
+      return `Bedrooms (Min: ${min}, Max: ${max})`;
+    } else if (field === 'n_bathrooms') {
+      return `Bathrooms (Min: ${min}, Max: ${max})`;
+    } else if (field === 'area') {
+      return `Area (Min: ${areaMin} m², Max: ${areaMax} m²)`;
+    }
+    return '';
+  }
+
   return (
     <div>
       {!showPrice ? (
@@ -99,45 +170,74 @@ export default function HousingSearchForm() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="bedrooms" className="text-purple-100">Bedrooms</Label>
-                  <Input
-                    id="bedrooms"
-                    type="number"
-                    placeholder="Number of bedrooms"
-                    className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
-                    value={formData.n_bedrooms}
-                    onChange={(e) => setFormData({ ...formData, n_bedrooms: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="bathrooms" className="text-purple-100">Bathrooms</Label>
-                  <Input
-                    id="bathrooms"
-                    type="number"
-                    placeholder="Number of bathrooms"
-                    className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
-                    value={formData.n_bathrooms}
-                    onChange={(e) => setFormData({ ...formData, n_bathrooms: e.target.value })}
-                    required
-                  />
-                </div>
+              {/* Property Type Selection */}
+              <div className="space-y-2">
+                <Label htmlFor="type" className="text-purple-100">Property Type</Label>
+                <Select onValueChange={(value) => setFormData({ ...formData, Type: value })} required>
+                  <SelectTrigger className="bg-gray-800 border-purple-500/30 text-white">
+                    <SelectValue placeholder="Select property type" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-gray-800 border-purple-500/30">
+                    <SelectItem
+                      value="apartment"
+                      className="hover:bg-purple-600 hover:ring-2 hover:ring-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-200"
+                    >
+                      Apartment
+                    </SelectItem>
+                    <SelectItem
+                      value="villa"
+                      className="hover:bg-purple-600 hover:ring-2 hover:ring-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-200"
+                    >
+                      House
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="area" className="text-purple-100">Area (sq m)</Label>
-                <Input
-                  id="area"
-                  type="number"
-                  placeholder="Total area in square feet"
-                  className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
-                  value={formData.area}
-                  onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                  required
-                />
-              </div>
+              {/* Conditionally Rendered Fields for Bedrooms, Bathrooms, and Area */}
+              {formData.Type && (
+                <>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="bedrooms" className="text-purple-100">{generateLabel('n_bedrooms')}</Label>
+                      <Input
+                        id="bedrooms"
+                        type="number"
+                        placeholder="Number of bedrooms"
+                        className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
+                        value={formData.n_bedrooms}
+                        onChange={(e) => handleInputChange(e, 'n_bedrooms')}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="bathrooms" className="text-purple-100">{generateLabel('n_bathrooms')}</Label>
+                      <Input
+                        id="bathrooms"
+                        type="number"
+                        placeholder="Number of bathrooms"
+                        className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
+                        value={formData.n_bathrooms}
+                        onChange={(e) => handleInputChange(e, 'n_bathrooms')}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="area" className="text-purple-100">{generateLabel('area')}</Label>
+                    <Input
+                      id="area"
+                      type="number"
+                      placeholder="Total area in square meters"
+                      className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
+                      value={formData.area}
+                      onChange={(e) => handleInputChange(e, 'area')}
+                      required
+                    />
+                  </div>
+                </>
+              )}
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -183,29 +283,6 @@ export default function HousingSearchForm() {
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="type" className="text-purple-100">Property Type</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, Type: value })} required>
-                  <SelectTrigger className="bg-gray-800 border-purple-500/30 text-white">
-                    <SelectValue placeholder="Select property type" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-purple-500/30">
-                    <SelectItem
-                      value="apartment"
-                      className="hover:bg-purple-600 hover:ring-2 hover:ring-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-200"
-                    >
-                      Apartment
-                    </SelectItem>
-                    <SelectItem
-                      value="villa"
-                      className="hover:bg-purple-600 hover:ring-2 hover:ring-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-200"
-                    >
-                      House
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
               </div>
 
               <Button
