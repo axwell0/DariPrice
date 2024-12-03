@@ -17,15 +17,17 @@ import PriceDisplay from '@/components/PriceDisplay'
 type StateCityData = Record<string, string[]>
 
 async function predictHousePrice(formData: unknown) {
-  const response = await fetch('http://localhost:5000/api/predict', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  });
-  return response.json();
-}
+const apiUrl = process.env.NEXT_PUBLIC_API_URL; // Access the environment variable
+
+const response = await fetch(`${apiUrl}/api/predict`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formData),  // Assuming formData is your data object
+});
+
+return response.json();
 
 export default function HousingSearchForm() {
   const initialFormData = {
