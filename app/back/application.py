@@ -6,6 +6,11 @@ app = Flask(__name__)
 CORS(app)
 
 final_model = load_model('final_model')
+@app.route('/',methods=['GET'])
+def hello():
+    return '<h2>Hello World</h2>'
+
+
 @app.route('/api/predict', methods=['POST'])
 def predict_house_price():
     data = request.json
@@ -31,4 +36,4 @@ def predict_house_price():
     print(response)
     return jsonify(response)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
