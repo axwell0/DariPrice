@@ -1,7 +1,7 @@
 *.env
 *.log
 *.jsonl
-*.json
+
 .venv
 AutogluonModels
 catboost_info
