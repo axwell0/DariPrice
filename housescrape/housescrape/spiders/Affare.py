@@ -3,7 +3,7 @@ from ..items import AffareItem
 
 
 class AffareSpider(scrapy.Spider):
-    name = 'Affare'
+    name = 'affare'
     start_urls = ['https://www.affare.tn/petites-annonces/tunisie/immobilier']
     page = 1
 

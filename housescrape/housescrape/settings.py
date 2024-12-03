@@ -1,4 +1,4 @@
-# Scrapy settings for Affare project
+# Scrapy settings for housescrape project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -10,10 +10,10 @@ from datetime import datetime
 import logging
 import os
 
-BOT_NAME = "Affare"
+BOT_NAME = "housescrape"
 
-SPIDER_MODULES = ["Affare.spiders"]
-NEWSPIDER_MODULE = "Affare.spiders"
+SPIDER_MODULES = ["housescrape.spiders"]
+NEWSPIDER_MODULE = "housescrape.spiders"
 
 
 # Obey robots.txt rules
@@ -48,7 +48,7 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 8
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-    "Affare.middlewares.AffareSpiderMiddleware": 543,
+    "housescrape.middlewares.AffareSpiderMiddleware": 543,
 }
 TELNETCONSOLE_ENABLED = False
 
@@ -56,7 +56,7 @@ TELNETCONSOLE_ENABLED = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    "Affare.middlewares.MongoDBDeduplicationMiddleware": 543,
+    "housescrape.middlewares.MongoDBDeduplicationMiddleware": 543,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 }
 
@@ -78,8 +78,8 @@ FEED_EXPORT_ENCODING = 'utf-8'
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 
-    "Affare.pipelines.JSONExport": 300,
-    "Affare.pipelines.MongoPipeline": 400,
+    "housescrape.pipelines.JSONExport": 300,
+    "housescrape.pipelines.MongoPipeline": 400,
 
 }
 
