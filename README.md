@@ -7,4 +7,4 @@ By scraping real estate listings from Affare.tn and Menzili.tn, the project buil
 A web app is deployed on Railway to allow usage of our trained model: https://dariprice.up.railway.app.l
 
 Preview: 
-![Uploading chrome_jALQzCohk3.png…]()
+![chrome_jALQzCohk3](https://github.com/user-attachments/assets/e4463992-cf90-4aef-9341-e2fa24b11a31)
