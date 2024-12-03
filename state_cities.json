@@ -1,0 +1,49 @@
+{
+  "ariana": [
+    "ariana ville",
+    "la soukra",
+    "ennasr",
+    "menzah",
+    "raoued"
+  ],
+  "ben arous": [
+    "rades",
+    "el mourouj",
+    "medina jedida"
+  ],
+  "bizerte": [
+    "bizerte nord"
+  ],
+  "mahdia": [
+    "mahdia"
+  ],
+  "medenine": [
+    "djerba"
+  ],
+  "nabeul": [
+    "nabeul",
+    "kelibia",
+    "hammamet",
+    "hammamet nord",
+    "mrezga",
+    "hammamet centre",
+    "hammamet sud",
+    "el haouaria",
+    "beni khiar",
+    "korba"
+  ],
+  "sousse": [
+    "akouda",
+    "kantaoui",
+    "sahloul",
+    "sousse jawhara",
+    "sousse medina",
+    "hammam sousse"
+  ],
+  "tunis": [
+    "le bardo",
+    "a\u00efn zaghouan",
+    "la marsa",
+    "l'aouina"
+  ]
+}
