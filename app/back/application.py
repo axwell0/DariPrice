@@ -4,7 +4,7 @@ from flask_cors import CORS
 from pycaret.regression import *
 app = Flask(__name__)
 CORS(app)
-CORS(app, resources={r"/api/*": {"origins": "https://your-nextjs-app.onrender.com"}})
+CORS(app, resources={r"/api/*": {"origins": "https://dariprice.onrender.com"}})
 
 final_model = load_model('final_model')
 @app.route('/',methods=['GET'])
