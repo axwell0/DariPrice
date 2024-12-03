@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Estimator</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">House Price Estimator</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="area">Area (sq meters)</label>
+                <input type="number" class="form-control" id="area" name="area" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="n_bedrooms">Number of Bedrooms</label>
+                <input type="number" class="form-control" id="n_bedrooms" name="n_bedrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="n_bathrooms">Number of Bathrooms</label>
+                <input type="number" class="form-control" id="n_bathrooms" name="n_bathrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="property_type">Property Type</label>
+                <select class="form-control" id="property_type" name="property_type" required>
+                    <option>appartement</option>
+                    <option>villa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <select class="form-control" id="state" name="state" required>
+                    <option value="">Select a State</option>
+                    {% for state in states_cities.keys() %}
+                    <option value="{{ state }}">{{ state }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <select class="form-control" id="city" name="city" required>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+
+        const statesCities = {{ states_cities | tojson | safe }}
+        const stateSelect = document.getElementById("state");
+        const citySelect = document.getElementById("city");
+        stateSelect.addEventListener('change', function() {
+            // Clear previous city options
+            citySelect.innerHTML = '<option value="">Select a City</option>';
+
+            // Get the selected state
+            const selectedState = this.value;
+
+            // If a state is selected, populate cities
+            if (selectedState) {
+                const cities = statesCities[selectedState];
+
+                // Add city options
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        });
+
+        // Trigger city population for the default state
+        stateSelect.dispatchEvent(new Event("change"));
+    </script>
+</body>
+</html>
