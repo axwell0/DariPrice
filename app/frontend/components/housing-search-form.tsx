@@ -18,7 +18,7 @@ type StateCityData = Record<string, string[]>
 
 async function predictHousePrice(formData: unknown) {
   const api_url = process.env.NEXT_API_URL
-  const response = await fetch(`${api_url}/api/predict`, {
+  const response = await fetch(`https://api-dariprice.onrender.com/api/predict`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
