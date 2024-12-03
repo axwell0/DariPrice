@@ -1,1 +1,1 @@
-web: gunicorn app.back.application:app
+web: waitress-serve app.back.application:app
