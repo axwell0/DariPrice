@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48bcf999-8c8f-465c-b3bb-c17f82cfce5b" name="Changes" comment="rename scrapers">
+    <list default="true" id="48bcf999-8c8f-465c-b3bb-c17f82cfce5b" name="Changes" comment="added form controls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/frontend/components/housing-search-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/housing-search-form.tsx" afterDir="false" />
     </list>
@@ -117,7 +117,7 @@
       <workItem from="1733192026197" duration="1140000" />
       <workItem from="1733193191237" duration="25000" />
       <workItem from="1733193222295" duration="7153000" />
-      <workItem from="1733242177209" duration="1875000" />
+      <workItem from="1733242177209" duration="3781000" />
     </task>
     <task id="LOCAL-00001" summary=" bug fix in the frontend">
       <option name="closed" value="true" />
@@ -271,7 +271,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733242494373</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added form controls">
+      <option name="closed" value="true" />
+      <created>1733244225538</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1733244225538</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added form controls">
+      <option name="closed" value="true" />
+      <created>1733244852352</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733244852352</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +309,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="env variable added for api" />
     <MESSAGE value="rename scrapers" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename scrapers" />
+    <MESSAGE value="added form controls" />
+    <option name="LAST_COMMIT_MESSAGE" value="added form controls" />
   </component>
 </project>

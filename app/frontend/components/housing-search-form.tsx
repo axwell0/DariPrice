@@ -87,9 +87,7 @@ export default function HousingSearchForm() {
     setShowPrice(false);
   }
 
-  // Function to generate the label with dynamic range
   const generateLabel = (field: string) => {
-
     if (formData.Type === "apartment") {
       if (field === 'n_bathrooms') {
         return `Bathrooms (Min: 1, Max: 2)`;
@@ -118,7 +116,6 @@ export default function HousingSearchForm() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
     const value = parseInt(e.target.value);
 
-    // Apply dynamic constraints based on property type
     if (formData.Type === "apartment") {
       if (field === 'n_bathrooms' && value >= 1 && value <= 2) {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
@@ -134,6 +131,24 @@ export default function HousingSearchForm() {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
       } else if (field === 'area' && value >= 100 && value <= 1000) {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
+      }
+    }
+  }
+
+  const handleAreaBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value);
+
+    if (formData.Type === "apartment") {
+      if (value < 30 || value > 200) {
+        setError("Area must be between 30 and 200 sq m for apartments.");
+      } else {
+        setError(null); // Reset the error if the value is valid
+      }
+    } else if (formData.Type === "villa") {
+      if (value < 100 || value > 1000) {
+        setError("Area must be between 100 and 1000 sq m for houses.");
+      } else {
+        setError(null); // Reset the error if the value is valid
       }
     }
   }
@@ -174,85 +189,87 @@ export default function HousingSearchForm() {
               </div>
 
               {formData.Type && (
-                <>
-                  <div className="grid grid-cols-2 gap-4">
+                  <>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="bedrooms" className="text-purple-100">{generateLabel('n_bedrooms')}</Label>
+                        <Input
+                            id="bedrooms"
+                            type="number"
+                            placeholder="Number of bedrooms"
+                            className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
+                            value={formData.n_bedrooms}
+                            onChange={(e) => handleInputChange(e, 'n_bedrooms')}
+                            required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="bathrooms" className="text-purple-100">{generateLabel('n_bathrooms')}</Label>
+                        <Input
+                            id="bathrooms"
+                            type="number"
+                            placeholder="Number of bathrooms"
+                            className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
+                            value={formData.n_bathrooms}
+                            onChange={(e) => handleInputChange(e, 'n_bathrooms')}
+                            required
+                        />
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="bedrooms" className="text-purple-100">{generateLabel('n_bedrooms')}</Label>
+                      <Label htmlFor="area" className="text-purple-100">{generateLabel('area')}</Label>
                       <Input
-                        id="bedrooms"
-                        type="number"
-                        placeholder="Number of bedrooms"
-                        className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
-                        value={formData.n_bedrooms}
-                        onChange={(e) => handleInputChange(e, 'n_bedrooms')}
-                        required
+                          id="area"
+                          type="number"
+                          placeholder="Area in sq m"
+                          className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
+                          value={formData.area}
+                          onChange={(e) => setFormData({...formData, area: e.target.value})}
+                          onBlur={(e) => handleAreaBlur(e)} // Validation on blur
+                          required
                       />
                     </div>
+
+
                     <div className="space-y-2">
-                      <Label htmlFor="bathrooms" className="text-purple-100">{generateLabel('n_bathrooms')}</Label>
-                      <Input
-                        id="bathrooms"
-                        type="number"
-                        placeholder="Number of bathrooms"
-                        className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
-                        value={formData.n_bathrooms}
-                        onChange={(e) => handleInputChange(e, 'n_bathrooms')}
-                        required
-                      />
+                      <Label htmlFor="state" className="text-purple-100">State</Label>
+                      <Select onValueChange={handleStateChange} value={formData.state} required>
+                        <SelectTrigger className="bg-gray-800 border-purple-500/30 text-white">
+                          <SelectValue placeholder="Select State"/>
+                        </SelectTrigger>
+                        <SelectContent className="bg-gray-800 border-purple-500/30">
+                          {states.map(state => (
+                              <SelectItem key={state} value={state}>{state}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="area" className="text-purple-100">{generateLabel('area')}</Label>
-                    <Input
-                      id="area"
-                      type="number"
-                      placeholder="Area in sq m"
-                      className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
-                      value={formData.area}
-                      onChange={(e) => handleInputChange(e, 'area')}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="state" className="text-purple-100">State</Label>
-                    <Select onValueChange={handleStateChange} value={formData.state} required>
-                      <SelectTrigger className="bg-gray-800 border-purple-500/30 text-white">
-                        <SelectValue placeholder="Select State" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-gray-800 border-purple-500/30">
-                        {states.map(state => (
-                          <SelectItem key={state} value={state}>{state}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="city" className="text-purple-100">City</Label>
-                    <Select
-                      onValueChange={(value) => setFormData({ ...formData, city: value })}
-                      value={formData.city}
-                      required
-                    >
-                      <SelectTrigger className="bg-gray-800 border-purple-500/30 text-white">
-                        <SelectValue placeholder="Select City" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-gray-800 border-purple-500/30">
-                        {cities.map(city => (
-                          <SelectItem key={city} value={city}>{city}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </>
+                    <div className="space-y-2">
+                      <Label htmlFor="city" className="text-purple-100">City</Label>
+                      <Select
+                          onValueChange={(value) => setFormData({...formData, city: value})}
+                          value={formData.city}
+                          required
+                      >
+                        <SelectTrigger className="bg-gray-800 border-purple-500/30 text-white">
+                          <SelectValue placeholder="Select City"/>
+                        </SelectTrigger>
+                        <SelectContent className="bg-gray-800 border-purple-500/30">
+                          {cities.map(city => (
+                              <SelectItem key={city} value={city}>{city}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </>
               )}
 
               <div className="flex justify-center">
                 <Button
-                  type="submit"
-                  className="bg-purple-600 text-white w-full"
+                    type="submit"
+                    className="bg-purple-600 text-white w-full"
                 >
                   Submit
                 </Button>
@@ -261,10 +278,10 @@ export default function HousingSearchForm() {
           </div>
         </div>
       ) : (
-        <PriceDisplay
-          price={estimatedPrice}
-          onGoBack={handleGoBack}
-        />
+          <PriceDisplay
+              price={estimatedPrice}
+              onGoBack={handleGoBack}
+          />
       )}
     </div>
   )
