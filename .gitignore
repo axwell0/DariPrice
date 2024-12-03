@@ -6,3 +6,5 @@
 AutogluonModels
 catboost_info
 airflow
+/webapp
+/airflow

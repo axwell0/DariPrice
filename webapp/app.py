@@ -33,7 +33,7 @@ def index():
         # Render result template
         return render_template('result.html', estimated_price=estimated_price)
     else:
-        with open('state_cities.json','r') as f:
+        with open('../state_cities.json', 'r') as f:
             state_cities = json.load(f)
         return render_template('index.html',states_cities=state_cities)
 

@@ -1,4 +1,3 @@
-// src/components/PriceDisplay.tsx
 import React from 'react';
 
 interface PriceDisplayProps {

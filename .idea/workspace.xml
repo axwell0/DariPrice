@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="48bcf999-8c8f-465c-b3bb-c17f82cfce5b" name="Changes" comment="" />
+    <list default="true" id="48bcf999-8c8f-465c-b3bb-c17f82cfce5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TNEstate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TNEstate.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/backend/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/components/PriceDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/PriceDisplay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/components/housing-search-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/housing-search-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/ui/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/components/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/ui/label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/ui/select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/libs/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/libs/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+        <option value="Python Script" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "axwell0"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/axwell0/DariPrice.git",
+    "accountId": "75f3ffe2-858d-4d77-8ac6-6ad0cf24db07"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 5
@@ -21,12 +65,36 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/mahdi/PycharmProjects/TNEstate/app/frontend/libs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\mahdi\\PycharmProjects\\TNEstate\\app\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\app\frontend\libs" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\app\backend" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\cock\backend" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\cock" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\app\frontend\components" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\app\frontend\pages" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\app\frontend\app" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\app\frontend\components\ui" />
+      <recent name="C:\Users\mahdi\PycharmProjects\TNEstate\cock" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -43,8 +111,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1733141122103</updated>
-      <workItem from="1733141123112" duration="86000" />
+      <workItem from="1733141123112" duration="36571000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
