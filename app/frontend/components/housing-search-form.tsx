@@ -45,10 +45,10 @@ export default function HousingSearchForm() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null)
-  const [showPrice, setShowPrice] = useState(false) // State to toggle between form and price display
+  const [showPrice, setShowPrice] = useState(false)
   const [states, setStates] = useState<string[]>([])
   const [cities, setCities] = useState<string[]>([])
-  const [error, setError] = useState<string | null>(null) // State to handle error messages
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const availableStates = Object.keys(stateCityData as StateCityData).sort()
@@ -98,7 +98,7 @@ export default function HousingSearchForm() {
       if (field === 'area') {
         return `Area (Min: 30 sq m, Max: 200 sq m)`;
       }
-    } else if (formData.Type === "villa") { // House
+    } else if (formData.Type === "villa") {
       if (field === 'n_bathrooms') {
         return `Bathrooms (Min: 1, Max: 5)`;
       }
@@ -124,7 +124,7 @@ export default function HousingSearchForm() {
       } else if (field === 'area' && value >= 30 && value <= 200) {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
       }
-    } else if (formData.Type === "villa") { // House
+    } else if (formData.Type === "villa") {
       if (field === 'n_bathrooms' && value >= 1 && value <= 5) {
         setFormData(prev => ({ ...prev, [field]: e.target.value }));
       } else if (field === 'n_bedrooms' && value >= 1 && value <= 7) {
@@ -142,13 +142,13 @@ export default function HousingSearchForm() {
       if (value < 30 || value > 200) {
         setError("Area must be between 30 and 200 sq m for apartments.");
       } else {
-        setError(null); // Reset the error if the value is valid
+        setError(null);
       }
     } else if (formData.Type === "villa") {
       if (value < 100 || value > 1000) {
         setError("Area must be between 100 and 1000 sq m for houses.");
       } else {
-        setError(null); // Reset the error if the value is valid
+        setError(null);
       }
     }
   }
@@ -226,7 +226,7 @@ export default function HousingSearchForm() {
                           className="bg-gray-800 border-purple-500/30 text-white placeholder:text-gray-400"
                           value={formData.area}
                           onChange={(e) => setFormData({...formData, area: e.target.value})}
-                          onBlur={(e) => handleAreaBlur(e)} // Validation on blur
+                          onBlur={(e) => handleAreaBlur(e)}
                           required
                       />
                     </div>
