@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48bcf999-8c8f-465c-b3bb-c17f82cfce5b" name="Changes" comment="env variable added for api">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/frontend/components/housing-search-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/components/housing-search-form.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +103,7 @@
       <workItem from="1733141123112" duration="42102000" />
       <workItem from="1733192026197" duration="1140000" />
       <workItem from="1733193191237" duration="25000" />
-      <workItem from="1733193222295" duration="5383000" />
+      <workItem from="1733193222295" duration="5419000" />
     </task>
     <task id="LOCAL-00001" summary=" bug fix in the frontend">
       <option name="closed" value="true" />
@@ -210,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733239766091</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="env variable added for api">
+      <option name="closed" value="true" />
+      <created>1733240291535</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733240291535</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
